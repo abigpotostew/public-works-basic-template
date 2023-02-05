@@ -1,3 +1,21 @@
+let devMode = false;
+if(devMode){
+    /**
+     * Enable new hashes on click during development.
+     */
+    const freshHash = () => {
+        window.location = '?hash=' + generateTxHash()
+    }
+    window.addEventListener('touchend', function () {
+        freshHash()
+    });
+    document.addEventListener('keyup', (e) => {
+        if (e.key === ' ') {
+            freshHash()
+        }
+    })
+}
+
 const prng = createPrng()
 
 setProperties({
